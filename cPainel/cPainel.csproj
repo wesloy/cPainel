@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9B74AC5C-BEFB-4146-A68B-E58C94DE8B95}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cPainel</RootNamespace>
+    <AssemblyName>cPainel</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>cPainel.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>buddy-signon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Algar.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Algar.Utils\bin\Debug\Algar.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="class\Constants.cs" />
+    <Compile Include="class\Dados.cs" />
+    <Compile Include="class\Log.cs" />
+    <Compile Include="form\frmCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmCadastro.Designer.cs">
+      <DependentUpon>frmCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmAutenticar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmAutenticar.Designer.cs">
+      <DependentUpon>frmAutenticar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmCriptografiaSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmCriptografiaSenha.Designer.cs">
+      <DependentUpon>frmCriptografiaSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmListagemFerramentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmListagemFerramentas.Designer.cs">
+      <DependentUpon>frmListagemFerramentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="form\frmCadastro.resx">
+      <DependentUpon>frmCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmAutenticar.resx">
+      <DependentUpon>frmAutenticar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmCriptografiaSenha.resx">
+      <DependentUpon>frmCriptografiaSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmListagemFerramentas.resx">
+      <DependentUpon>frmListagemFerramentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="buddy-signon.ico" />
+    <Content Include="imagens\01.ico" />
+    <Content Include="imagens\02.ico" />
+    <Content Include="imagens\03.ico" />
+    <Content Include="imagens\04.ico" />
+    <Content Include="imagens\05.ico" />
+    <Content Include="imagens\06.ico" />
+    <Content Include="imagens\07.ico" />
+    <Content Include="imagens\08.ico" />
+    <Content Include="imagens\09.ico" />
+    <Content Include="imagens\10.ico" />
+    <Content Include="imagens\11.ico" />
+    <Content Include="imagens\12.ico" />
+    <Content Include="imagens\13.ico" />
+    <Content Include="imagens\14.ico" />
+    <Content Include="imagens\4BoxAgrupado.png" />
+    <Content Include="imagens\background_footer.png" />
+    <Content Include="imagens\bgItem1.png" />
+    <Content Include="imagens\buddy-signon.ico" />
+    <Content Include="imagens\clock.png" />
+    <Content Include="imagens\edit_add.png" />
+    <Content Include="imagens\geometricBackground.jpg" />
+    <Content Include="imagens\Imagem3.png" />
+    <Content Include="imagens\kbackgammon_engine.png" />
+    <Content Include="imagens\key2.png" />
+    <Content Include="imagens\prevencion_fraude.png" />
+    <Content Include="imagens\prevenção-a-fraude.png" />
+    <Content Include="imagens\user-black.png" />
+    <Content Include="visualizarSenha.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

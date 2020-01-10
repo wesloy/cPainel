@@ -1,0 +1,80 @@
+﻿using System;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+
+namespace cPainel.form
+{
+    public partial class frmPrincipal : Form
+    {
+        //Variaveis Uteis
+        private Dados oDados = new Dados();
+        Algar.Utils.Helpers hlp = new Algar.Utils.Helpers();
+
+        //Tempo para sessão expirar
+        private DateTime dt = DateTime.Now;
+        private DateTime dtFim = DateTime.Now.AddMinutes(Convert.ToInt32(Constants.TIMEOUT));
+        private bool exitflag = false;
+
+        public frmPrincipal()
+        {
+            InitializeComponent();
+        }
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            lbTimeOut.Text = "";
+            timer1.Interval = 1000; //1 segundo
+            timer1.Start();
+            lbTitulo.Parent = PictureBox1;
+            lbTimeOut.Parent = PictureBox1;
+            lblAcessos.Text = oDados.QtdAcessosHoje().ToString();
+            lblVersao.Text = "v " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            lbCreditos.Text = "Desenvolvido por: " + Constants.CREDITOS.ToString();
+            lblInfoLogin.Text = "     " + hlp.exibeMensagemDoDia() + ", " + Environment.UserName.ToString();
+
+            frmListagemFerramentas listaFerramentas = new frmListagemFerramentas();
+            hlp.abrirFormInPanelMDI(listaFerramentas, this, panel3, FormBorderStyle.None);
+        }
+        private void btnAcessoRestrito_Click(object sender, EventArgs e)
+        {
+            frmAutenticar frm = new frmAutenticar();
+            this.TopMost = false;
+            frm.referencia_formPrincipal = this; //referenciar formulario principal
+            hlp.abrirForm(frm, true);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            do
+            {
+                if (exitflag)
+                {
+                    timer1.Stop();
+                    break; //para forçar sair do while
+                }
+                TimeSpan ts1 = dtFim.Subtract(DateTime.Now);
+                string total = string.Format("{0}:{1}:{2}", Convert.ToInt64(ts1.TotalHours), ts1.Minutes, ts1.Seconds);
+                string dedicatoria;
+                DateTime fimzueira = DateTime.Parse("2018-09-06 16:00:00");
+                //somente para 1dia
+                if (DateTime.Now < fimzueira) {
+                    dedicatoria = "Dedicado a minha querida amiga Carla Inácio (^-^) " + Environment.NewLine;
+                }
+                else { dedicatoria = string.Empty; }
+
+                lbTimeOut.Text = dedicatoria + Constants.MSG_TIMEOUT.Replace("@TEMPO", total.ToString()).ToString();
+                Application.DoEvents();
+            } while (DateTime.Now < dtFim);
+            Application.Exit();
+        }
+
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            exitflag = true;
+            timer1.Stop();
+            Application.Exit();
+        }
+    }
+}
+
